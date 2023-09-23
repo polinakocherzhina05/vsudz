@@ -1,7 +1,8 @@
-print('Введите число 1') 
-a = input()
-print('Введите число 2')
-b = input()
+print('Введите число 1)')
+a = float(input())
+print('Введите число 2)')
+b = float(input())
+if b < a:
     print('1-ое число больше 2-го')
 if b > a:
     print('2-ое число больше 1-го')

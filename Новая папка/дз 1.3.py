@@ -1,7 +1,7 @@
-import math
+
 print('Введите X, Y, Z')
-X = int(input())
-Y = int(input())
-Z = int(input())
-a = math.sqrt(X*X+Y*Y+Z*Z)
+X = float(input())
+Y = float(input())
+Z = float(input())
+a = (X*X+Y*Y+Z*Z) ** 0.5
 print(a)

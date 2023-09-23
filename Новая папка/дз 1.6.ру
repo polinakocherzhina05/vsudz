@@ -1,0 +1,6 @@
+a = float(input())
+b = int(a)
+if a == b:
+   print('Число целое')
+else:
+    print('Число не целое')

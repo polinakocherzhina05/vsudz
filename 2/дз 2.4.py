@@ -1,13 +1,8 @@
 x = input()
-y, z = x. count('('),
-x.count(')')
-if y - z > 1:
+y, z = x.count('('), x.count(')')
+if y > z:
     print(f'Не хватает {y - z} закрывающих скобок')
-elif y > z == 1:
-    print('Не хватает 1 закрывающей скобки')
-elif z - y > 1:
+elif z > y:
     print(f'Не хватает {z - y} открывающих скобок')
-elif z > y == 1:
-    print('Не хватает 1 открывающей скобки')
 else:
     print('Всё в порядке')

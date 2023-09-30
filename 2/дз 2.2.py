@@ -1,5 +1,5 @@
 a, b = input(), []
-while a :
+while a:
     b.append(a)
     a = input()
 b.sort(reverse=True)

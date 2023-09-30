@@ -2,5 +2,5 @@ a, b = input(), []
 while a :
     b.append(a)
     a = input()
-b.soret(reverse=True)
+b.sort(reverse=True)
 print(''.join(b))

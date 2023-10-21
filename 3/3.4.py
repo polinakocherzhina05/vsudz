@@ -1,4 +1,4 @@
-from one import input_list
+from 3.1 import input_list
 from collections import Counter
 a = input_list()
 a = Counter(a)

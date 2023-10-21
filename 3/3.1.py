@@ -1,8 +1,8 @@
 def f(x):
     while x:
-        list.append(x)
+        lst.append(x)
         x = input()
-    return list
+    return lst
 x = input()
-list = []
+lst = []
 print(f(x))

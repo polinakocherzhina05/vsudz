@@ -1,4 +1,3 @@
-n = int(input("Месяц: "))
 def Season(n):
     if n in [1, 2, 12]:
         print("Зима")
@@ -8,4 +7,5 @@ def Season(n):
         print("Лето")
     else:
         print("Осень")
+        n = int(input("Месяц: "))
 Season(n)

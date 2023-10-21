@@ -1,7 +1,6 @@
 from one import ff
 from collections import Counter
 
-
 a = ff()
 a = Counter(a)
 print("Элемент | Частота")

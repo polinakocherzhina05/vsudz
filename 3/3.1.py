@@ -1,8 +1,8 @@
-def f(x):
-    x = input()
+def ff(x):
+    lst = []
     while x:
         lst.append(x)
         x = input()
-    return list
-lst = []
-print(f(x))
+    return lst
+x = input()
+print(ff(x))

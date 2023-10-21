@@ -6,4 +6,4 @@ a = ff()
 a = Counter(a)
 print("Элемент | Частота")
 for i in a:
-    print("{:7}".format(i), "|", a[i])
+    print(f'{i} | {a[i]}')

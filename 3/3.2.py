@@ -1,11 +1,9 @@
-def season(n):
+def f(n):
     if n in [1, 2, 12]:
-        print("Зима")
-    elif n in [3, 4, 5]:
-        print("Весна")
-    elif n in [6, 7, 8]:
-        print("Лето")
-    else:
-        print("Осень")
-        n = int(input("Месяц: "))
-season(n)
+        return "зима"
+    if n in [3, 4, 5]:
+        return "весна"
+    if n in [6, 7, 8]:
+        return "лето"
+    return "осень"
+print(f(int(input()))) 

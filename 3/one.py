@@ -6,4 +6,5 @@ def ff():
         x = input()
     return lst
 
-print(ff())
+if __name__ == '__main__':
+    print(ff())

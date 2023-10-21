@@ -1,13 +1,7 @@
-def f(x):
-    while x:
-        lst.append(x)
-        x = input("Ввод: ")
-    lst = []
-    print("Элемент | Частота")
-    for t in lst:
-        if t not in lst:
-            print(t, "|", lst.count(t))
-            lst.append(t)
-x = input("Ввод: ")
-lst = []
-f(x)
+from one import input_list
+from collections import Counter
+a = input_list()
+a = Counter(a)
+print("Элемент | Частота")
+for i in a:
+    print("{:7}".format(i), "|", a[i])

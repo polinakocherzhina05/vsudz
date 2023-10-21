@@ -1,4 +1,4 @@
-def Season(n):
+def season(n):
     if n in [1, 2, 12]:
         print("Зима")
     elif n in [3, 4, 5]:
@@ -8,4 +8,4 @@ def Season(n):
     else:
         print("Осень")
         n = int(input("Месяц: "))
-Season(n)
+season(n)

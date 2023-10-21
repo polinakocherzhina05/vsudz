@@ -1,13 +1,13 @@
 def f(x):
     while x:
-        list.append(x)
+        lst.append(x)
         x = input("Ввод: ")
     lst = []
     print("Элемент | Частота")
-    for t in list:
+    for t in lst:
         if t not in lst:
-            print(t, "|", list.count(t))
+            print(t, "|", lst.count(t))
             lst.append(t)
 x = input("Ввод: ")
-list = []
+lst = []
 f(x)

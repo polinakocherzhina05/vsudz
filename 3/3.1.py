@@ -1,5 +1,5 @@
 def ff(x):
-x = input()
+    x = input()
     lst = []
     while x:
         lst.append(x)

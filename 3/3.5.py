@@ -1,4 +1,6 @@
 def f(a):
     return sum(a) / len(a)
-a = [int(i) for i in input().split()]
+
+
+a = [int(a) for a in input().split()]
 print(f(a))

@@ -1,7 +1,11 @@
-from 3.1 import input_list
 from collections import Counter
-a = input_list()
-a = Counter(a)
-print("Элемент | Частота")
-for i in a:
-    print("{:7}".format(i), "|", a[i])
+from one import ff
+
+
+def ff(x):
+    print("Элемент | Частота")
+    return Counter(x)
+     
+x = ff(input())
+v = ff(x)
+print(*[f'{i} | {v[i]}' for i in v] , sep = '\n') 

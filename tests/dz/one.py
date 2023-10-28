@@ -1,7 +1,7 @@
 from gg.one1 import ff
 
 
-def swap(pl: list, k: int) -> list:
+def swap(pl, k) -> list:
     k %= len(pl)
     return pl[-k:] + pl[:-k]
 

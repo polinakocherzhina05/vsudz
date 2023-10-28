@@ -4,4 +4,4 @@ def notsame(x) -> bool:
 
 
 if __name__ == "__main__":
-    print(notsame(input().split()))
+    print(notsame([a for a in input().split()]))

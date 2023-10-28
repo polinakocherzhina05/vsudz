@@ -1,4 +1,4 @@
-def notsame(x) -> bool:
+def notsame(x):
     x = [(i, type(i)) for i in x]
     return len(x) == len(set(x))
 

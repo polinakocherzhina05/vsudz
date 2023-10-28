@@ -6,5 +6,4 @@ def swap(pl, k):
     return pl[-k:] + pl[:-k]
 
 
-if __name__ == "__main__":
-    print(swap(ff(input()), int(input())))
+ print(swap(ff(input()), int(input())))

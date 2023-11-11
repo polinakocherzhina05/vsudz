@@ -40,5 +40,5 @@ from five.i import binary_search
     ]
 )
 
-def test_binary_search__none(sequence, target):
+def test_binary_search_none(sequence, target):
     assert binary_search(sequence, target) is None

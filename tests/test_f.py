@@ -1,18 +1,14 @@
 import pytest
 from five.i import binary_search
-
-
-@pytest.mark.parametrize("sequence, target, expected", [
-    ([], 42, None),
+@pytest.mark.parametrize(
+    "sequence, target, expected", 
+    [
     ([0], 0, 0),
-    ([0], 1, None),
     ([-1, 0, 42], 0, 1),
     ([-42, 0, 42], 42, 2),
     ([-6, -5, -4, -3, -2, -1], -4, 2),
     ([1, 2, 3, 4, 5, 6], 4, 3),
     ([1, 2, 3, 4, 5, 6, 7], 4, 3),
-    ([1, 2, 3, 4, 5], 7, None),
-    ([1, 2, 3, 4, 5, 6], 7, None),
     ([42, 42, 42, 42, 42], 42, 0),
     ([-42, -42, -42, -42, -42], -42, 0),
     ([42, 42, 42, 42, 43], 43, 4),
@@ -20,12 +16,29 @@ from five.i import binary_search
     ([-2, -2, -1, 0, 1, 2, 2, 2], -1, 2),
     ([-2, -2, -1, 0, 1, 1, 2, 2], 1, 4),
     ([56, 230, 234, 747, 83274, 823573723], 823573723, 5),
-    ([1, 2, 3, 4, 5], 3, 2),  
-    ([1, 2, 3, 4, 5], 6, None),  
+    ([1, 2, 3, 4, 5], 3, 2),   
     ([1, 2, 3, 3, 4, 5], 3, 2),  
     ([1, 2, 3, 4, 5], 1, 0),  
-    ([1, 2, 3, 4, 5], 5, 4), 
-    ([], 3, None)  
-])
-def test_five (sequence, target, expected):
+    ([1, 2, 3, 4, 5], 5, 4),   
+    ]
+)
+
+def test_binary_search(sequence, target, expected):
     assert binary_search(sequence, target) == expected
+
+import pytest
+from five.i import binary_search
+@pytest.mark.parametrize(
+    "sequence, target, expected", 
+    [
+    ([], 42, None),
+    ([0], 1, None),
+    ([1, 2, 3, 4, 5], 7, None),
+    ([1, 2, 3, 4, 5, 6], 7, None),
+    ([1, 2, 3, 4, 5], 6, None),  
+    ([], 3, None),  
+    ]
+)
+
+def test_binary_search__none(sequence, target, expected):
+    assert binary_search(sequence, target) is expected

@@ -1,5 +1,5 @@
 import pytest
-from dz.five import binary_search
+from five.i import binary_search
 
 
 @pytest.mark.parametrize("sequence, target, expected", [

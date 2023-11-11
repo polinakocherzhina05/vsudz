@@ -1,5 +1,6 @@
 import pytest
 from five.i import binary_search
+
 @pytest.mark.parametrize(
     "sequence, target, expected", 
     [
@@ -28,6 +29,7 @@ def test_binary_search(sequence, target, expected):
 
 import pytest
 from five.i import binary_search
+
 @pytest.mark.parametrize(
     "sequence, target", 
     [

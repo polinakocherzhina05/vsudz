@@ -31,14 +31,14 @@ from five.i import binary_search
 @pytest.mark.parametrize(
     "sequence, target, expected", 
     [
-    ([], 42, None),
-    ([0], 1, None),
-    ([1, 2, 3, 4, 5], 7, None),
-    ([1, 2, 3, 4, 5, 6], 7, None),
-    ([1, 2, 3, 4, 5], 6, None),  
-    ([], 3, None),  
+    ([], 42,),
+    ([0], 1,),
+    ([1, 2, 3, 4, 5], 7,),
+    ([1, 2, 3, 4, 5, 6], 7,),
+    ([1, 2, 3, 4, 5], 6,),  
+    ([], 3, ),  
     ]
 )
 
 def test_binary_search__none(sequence, target, expected):
-    assert binary_search(sequence, target) is expected
+    assert binary_search(sequence, target) is None

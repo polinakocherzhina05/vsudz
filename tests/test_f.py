@@ -29,7 +29,7 @@ def test_binary_search(sequence, target, expected):
 import pytest
 from five.i import binary_search
 @pytest.mark.parametrize(
-    "sequence, target, expected", 
+    "sequence, target", 
     [
     ([], 42,),
     ([0], 1,),
@@ -40,5 +40,5 @@ from five.i import binary_search
     ]
 )
 
-def test_binary_search__none(sequence, target, expected):
+def test_binary_search__none(sequence, target):
     assert binary_search(sequence, target) is None

@@ -1,18 +1,21 @@
 from collections import deque
-from typing import Callable, Any
 
 
-def bfs(graph: dict[Any, list], start, target, function: Callable[Any, Any]) -> int | None:
-    visited = set()
-    queue = deque([(start, 0)])
+def condition(this, cur):
+    return this == cur
 
-    while queue:
-        node, distance = queue.popleft()
-        if function(node, target):
-            return distance
-        for neighbor in graph.get(node, []):
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append((neighbor, distance + 1))
 
+def search(gr, st, cur, f):
+    if not gr:
+        return None
+    k = deque([(st, 0)])
+    d = set([st])
+    while k:
+        this, forward = k.popleft()
+        if f(this, cur):
+            return forward
+        for near in gr.get(this, []):
+            if near not in d:
+                k.append((near, forward + 1))
+                d.add(near)
     return None

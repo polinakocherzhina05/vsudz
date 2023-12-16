@@ -1,5 +1,5 @@
 import pytest
-from dz7.hw7 import search
+from seven.h import search
 
 
 def condition(this, cur):

@@ -1,10 +1,6 @@
 from collections import deque
 
 
-def condition(this, cur):
-    return this == cur
-
-
 def search(gr, st, cur, f):
     if not gr:
         return None

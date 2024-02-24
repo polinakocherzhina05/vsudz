@@ -27,8 +27,9 @@ def test_input_fraction(numerator, denominator):
     [(1, 0), (2, 0)]
 )
 def test_validate_fraction(numerator, denominator):
+    fraction = Fraction(numerator, denominator)
     with pytest.raises(ValueError):
-        Fraction(numerator, denominator).validate()
+        fraction.validate()
 
 
 @pytest.mark.parametrize(

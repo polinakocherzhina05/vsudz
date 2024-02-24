@@ -46,7 +46,7 @@ def test_validate_fraction(numerator, denominator):
     ("numerator", "denominator"),
     [(5, 2), (1, 1), (3, 1)]
 )
-def __init__(numerator,denominator):
+def test__init__(numerator,denominator):
     f = Fraction(numerator, denominator)
     assert f.numerator == numerator
     assert f.denominator == denominator

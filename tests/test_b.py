@@ -1,14 +1,18 @@
 import pytest
 from nine.a import Fraction
-
+ 
 
 @pytest.mark.parametrize(
-    ("numerator", "denominator", "expected_output"),
-    [(5, 2, "5/2"), (1, 1, "1"), (3, 1, "3")]
+    ("numerator", "denominator"),
+    [(5, 2), (1, 1), (3, 1)]
 )
-def __str__(numerator, denominator, expected_output):
+def test_str_representation(numerator, denominator):
     fraction = Fraction(numerator, denominator)
-    assert fraction.__str__() == expected_output
+    if denominator == 1:
+        expected_str = str(numerator)
+    else:
+        expected_str = f"{numerator}/{denominator}"
+    assert str(fraction) == expected_str
 
 
 @pytest.mark.parametrize(

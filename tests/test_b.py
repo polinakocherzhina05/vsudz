@@ -19,11 +19,17 @@ def test_str_representation(numerator, denominator):
     ("numerator", "denominator"),
     [(5, 2), (1, 1), (3, 1)]
 )
-def test_input_fraction(numerator, denominator):
-    fraction = Fraction()    
-    fraction.numerator = numerator
-    fraction.denominator = denominator
+def test_input_fraction(numerator, denominator, monkeypatch):
+    def mock_input(prompt):
+        return str(numerator) if prompt == "Enter the numerator: " else str(denominator)
+
+    monkeypatch.setattr('builtins.input', mock_input)
+
+    fraction = Fraction()
     fraction.validate()
+
+    assert fraction.numerator == numerator
+    assert fraction.denominator == denominator
 
 
 @pytest.mark.parametrize(

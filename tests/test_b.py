@@ -1,52 +1,67 @@
 import pytest
-from nine.a import Fraction
- 
-
-@pytest.mark.parametrize(
-    ("numerator", "denominator"),
-    [(5, 2), (1, 1), (3, 1)]
-)
-def test_str_representation(numerator, denominator):
-    fraction = Fraction(numerator, denominator)
-    if denominator == 1:
-        expected_str = str(numerator)
-    else:
-        expected_str = f"{numerator}/{denominator}"
-    assert str(fraction) == expected_str
+import mock
+import builtins
+from nine.fraction import Fraction
 
 
 @pytest.mark.parametrize(
-    ("numerator", "denominator"),
-    [(5, 2), (1, 1), (3, 1)]
+    ('num', 'den'),
+    [
+        (12, 12),
+        (23, 121),
+        (0, 1),
+    ]
 )
-def test_input_fraction(numerator, denominator, monkeypatch):
-    def mock_input(prompt):
-        return str(numerator) if prompt == "Enter the numerator: " else str(denominator)
-
-    monkeypatch.setattr('builtins.input', mock_input)
-
-    fraction = Fraction()
-    fraction.validate()
-
-    assert fraction.numerator == numerator
-    assert fraction.denominator == denominator
+def test_init(num, den):
+    a = Fraction(num, den)
+    assert a.numerator == num
+    assert a.denominator == den
 
 
 @pytest.mark.parametrize(
-    ("numerator", "denominator"),
-    [(1, 0), (2, 0)]
+    ('num', 'den', 'res'),
+    [
+        (12, 12, '12/12'),
+        (23, 121, '23/121'),
+        (0, 1, '0/1'),
+    ]
 )
-def test_validate_fraction(numerator, denominator):
-    fraction = Fraction(numerator, denominator)
-    with pytest.raises(ValueError):
-        fraction.validate()
+def test_str(num, den, res):
+    a = Fraction(num, den)
+    assert str(a) == res
 
 
 @pytest.mark.parametrize(
-    ("numerator", "denominator"),
-    [(5, 2), (1, 1), (3, 1)]
+    ('values', 'ans'),
+    [
+        ('12 21', '12/21'),
+        ('1141 2142', '1141/2142'),
+        ('0 1', '0/1')
+    ]
 )
-def test__init__(numerator,denominator):
-    f = Fraction(numerator, denominator)
-    assert f.numerator == numerator
-    assert f.denominator == denominator
+def test_input_digits(values, ans):
+    a = Fraction()
+    with mock.patch.object(builtins, 'input', lambda _: values):
+        a.input_fraction()
+    assert str(a) == ans
+
+
+@pytest.mark.parametrize(
+    ('num', 'den', 'res'),
+    [
+        ('12', '15', (12, 15)),
+        (1, 12, (1, 12)),
+        ('12232', '213', (12232, 213))
+    ]
+)
+def test_validity(num, den, res):
+    a = Fraction()
+    assert a.validate(num, den) == res
+
+
+def test_validity_exception():
+    a = Fraction()
+    with pytest.raises(ZeroDivisionError, match="Знаменатель не может быть равен нулю"):
+        a.validate(1, 0)
+    with pytest.raises(ValueError, match='Неверный формат данных'):
+        a.validate('ewfmlkwje', 'kl;afsnar')

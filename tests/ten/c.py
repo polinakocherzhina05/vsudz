@@ -2,9 +2,20 @@ class Fraction:
     def __init__(self, numerator=0, denominator=1):
         self.numerator, self.denominator = self.validate(numerator, denominator)
 
+    def reduce(self):
+            gcd = self.gcd(self.numerator, self.denominator)
+            self.numerator //= gcd
+            self.denominator //= gcd
+
+    @staticmethod
+    def gcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
+
     def input_fraction(self):
         self.numerator, self.denominator = self.validate(
-            *input("Введите числитель и знаменатель через пробел: ").split(" ")
+            *input(" ").split(" ")
         )
 
     def __str__(self):
@@ -14,12 +25,13 @@ class Fraction:
     def validate(num, den):
         if den == 0:
             raise ZeroDivisionError("Знаменатель не может быть равен нулю")
-        if str(num).isdigit() and str(den).isdigit():
-            return int(num), int(den)
+        if str(num).lstrip("-").isdigit() and str(den).lstrip("-").isdigit():
+            return num, den
         raise ValueError("Неверный формат данных")
 
 
-# f = Fraction(12, 13)
-# f.validate(12, 1)
-# f.input_fraction()
-# print(type(f.numerator))
+# f = Fraction(0, 2)
+# f.reduce()
+# print(f.denominator)
+# print(f.numerator)
+

@@ -2,6 +2,7 @@ import pytest
 import mock
 import builtins
 from ten.c import Fraction
+from ten.c import IrreducibleFraction
 
 
 @pytest.mark.parametrize(
@@ -13,7 +14,7 @@ from ten.c import Fraction
         (-10, -15, 2, 3),
         (-2, 4, -1, 2),
         (6, -12, -1, 2),
-        (0, 2, 0, 1)
+        (0, 2, 0, 1),
     ],
 )
 def test_fraction_reduce(
@@ -99,3 +100,106 @@ def test_validity_exception():
         a.validate(1, 0)
     with pytest.raises(ValueError, match="Неверный формат данных"):
         a.validate("ewfmlkwje", "kl;afsnar")
+
+
+@pytest.mark.parametrize(
+    "numerator, denominator, expected_numerator, expected_denominator",
+    [
+        (6, 9, 2, 3),
+        (8, 12, 2, 3),
+        (15, 25, 3, 5),
+        (-10, -15, 2, 3),
+        (-2, 4, -1, 2),
+        (6, -12, -1, 2),
+        (0, 2, 0, 1),
+    ],
+)
+def test_fraction_reduce(
+    numerator, denominator, expected_numerator, expected_denominator
+):
+    b = IrreducibleFraction(numerator, denominator)
+    assert b.numerator == expected_numerator
+    assert b.denominator == expected_denominator
+
+
+@pytest.mark.parametrize(
+    "num1, denom1, num2, denom2, expected_num, expected_denom",
+    [
+        (1, 2, 1, 2, 4, 4),
+        (1, 3, 1, 3, 6, 9),
+        (1, 5, 3, 5, 20, 25),
+        (0, 4, 1, 4, 4, 16),
+        (1, 3, 1, 6, 9, 18),
+    ],
+)
+def test_add(num1, denom1, num2, denom2, expected_num, expected_denom):
+    f1 = Fraction(num1, denom1)
+    f2 = Fraction(num2, denom2)
+    result = f1 + f2
+    assert result.numerator == expected_num
+    assert result.denominator == expected_denom
+
+
+@pytest.mark.parametrize(
+    "num1, denom1, num2, denom2, expected_num, expected_denom",
+    [
+        (2, 3, 1, 3, 3, 9),
+        (3, 4, 1, 4, 8, 16),
+        (3, 5, 2, 5, 5, 25),
+        (1, 3, 1, 6, 3, 18),
+    ],
+)
+def test_sub(num1, denom1, num2, denom2, expected_num, expected_denom):
+
+    f1 = Fraction(num1, denom1)
+    f2 = Fraction(num2, denom2)
+    result = f1 - f2
+    assert result.numerator == expected_num
+    assert result.denominator == expected_denom
+
+
+@pytest.mark.parametrize(
+    "num1, den1, num2, den2, expected_result",
+    [
+        (1, 2, 1, 2, True),
+        (3, 4, 1, 4, False),
+        (2, 3, 2, 3, True),
+        (4, 5, 1, 3, False),
+    ],
+)
+def test_eq(num1, den1, num2, den2, expected_result):
+    f1 = Fraction(num1, den1)
+    f2 = Fraction(num2, den2)
+    result = f1 == f2
+    assert result == expected_result
+
+
+@pytest.mark.parametrize(
+    "num1, denom1, num2, denom2, expected_num, expected_denom",
+    [
+        (1, 3, 1, 3, 6, 9),
+        (1, 3, 1, 6, 9, 18),
+    ],
+)
+def test_add(num1, denom1, num2, denom2, expected_num, expected_denom):
+    f1 = IrreducibleFraction(num1, denom1)
+    f2 = IrreducibleFraction(num2, denom2)
+    result = f1 + f2
+    assert result.numerator == expected_num
+    assert result.denominator == expected_denom
+
+
+@pytest.mark.parametrize(
+    "num1, denom1, num2, denom2, expected_num, expected_denom",
+    [
+        (2, 3, 1, 3, 3, 9),
+        (1, 3, 1, 6, 3, 18),
+    ],
+)
+def test_sub(num1, denom1, num2, denom2, expected_num, expected_denom):
+
+    f1 = IrreducibleFraction(num1, denom1)
+    f2 = IrreducibleFraction(num2, denom2)
+    result = f1 - f2
+    assert result.numerator == expected_num
+    assert result.denominator == expected_denom

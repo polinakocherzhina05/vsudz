@@ -182,7 +182,9 @@ def test_eq(num1, den1, num2, den2, expected_result):
     [
         (1, 3, 1, 3, 2, 3),
         (1, 3, 1, 6, 1, 2),
-        (1, 2, 1, 2, 1, 1)
+        (1, 2, 1, 2, 1, 1),
+        (-1, 3, 2, 3, 1, 3),
+        (1, 2, -3, 4, -1, 4),
     ],
 )
 def test_add2(num1, denom1, num2, denom2, expected_num, expected_denom):
@@ -199,6 +201,7 @@ def test_add2(num1, denom1, num2, denom2, expected_num, expected_denom):
     [
         (2, 3, 1, 3, 1, 3),
         (1, 3, 1, 6, 1, 6),
+        (-2, 3, 1, 3, -1, 1),
     ],
 )
 def test_sub2(num1, denom1, num2, denom2, expected_num, expected_denom):

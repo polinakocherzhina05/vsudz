@@ -32,14 +32,14 @@ class Fraction:
             self.numerator * other.denominator + other.numerator * self.denominator
         )
         new_denom = self.denominator * other.denominator
-        return Fraction(new_num, new_denom)
+        return self.__class__(new_num, new_denom)
 
     def __sub__(self, other):
         new_num = (
             self.numerator * other.denominator - other.numerator * self.denominator
         )
         new_denom = self.denominator * other.denominator
-        return Fraction(new_num, new_denom)
+        return self.__class__(new_num, new_denom)
 
     def __eq__(self, other):
         return (

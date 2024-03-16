@@ -130,6 +130,7 @@ def test_fraction_reduce(
         (1, 5, 3, 5, 20, 25),
         (0, 4, 1, 4, 4, 16),
         (1, 3, 1, 6, 9, 18),
+        (1, 2, -3, 4, -2, 8),
     ],
 )
 def test_add(num1, denom1, num2, denom2, expected_num, expected_denom):
@@ -138,6 +139,7 @@ def test_add(num1, denom1, num2, denom2, expected_num, expected_denom):
     result = f1 + f2
     assert result.numerator == expected_num
     assert result.denominator == expected_denom
+    assert isinstance(result, Fraction)
 
 
 @pytest.mark.parametrize(
@@ -147,6 +149,7 @@ def test_add(num1, denom1, num2, denom2, expected_num, expected_denom):
         (3, 4, 1, 4, 8, 16),
         (3, 5, 2, 5, 5, 25),
         (1, 3, 1, 6, 3, 18),
+        (-1, 2, 3, 4, -10, 8)
     ],
 )
 def test_sub(num1, denom1, num2, denom2, expected_num, expected_denom):
@@ -156,6 +159,7 @@ def test_sub(num1, denom1, num2, denom2, expected_num, expected_denom):
     result = f1 - f2
     assert result.numerator == expected_num
     assert result.denominator == expected_denom
+    assert isinstance(result, Fraction)
 
 
 @pytest.mark.parametrize(
@@ -173,33 +177,35 @@ def test_eq(num1, den1, num2, den2, expected_result):
     result = f1 == f2
     assert result == expected_result
 
-
 @pytest.mark.parametrize(
     "num1, denom1, num2, denom2, expected_num, expected_denom",
     [
-        (1, 3, 1, 3, 6, 9),
-        (1, 3, 1, 6, 9, 18),
+        (1, 3, 1, 3, 2, 3),
+        (1, 3, 1, 6, 1, 2),
+        (1, 2, 1, 2, 1, 1)
     ],
 )
-def test_add(num1, denom1, num2, denom2, expected_num, expected_denom):
+def test_add2(num1, denom1, num2, denom2, expected_num, expected_denom):
     f1 = IrreducibleFraction(num1, denom1)
     f2 = IrreducibleFraction(num2, denom2)
     result = f1 + f2
     assert result.numerator == expected_num
     assert result.denominator == expected_denom
+    assert isinstance(result, IrreducibleFraction)
 
 
 @pytest.mark.parametrize(
     "num1, denom1, num2, denom2, expected_num, expected_denom",
     [
-        (2, 3, 1, 3, 3, 9),
-        (1, 3, 1, 6, 3, 18),
+        (2, 3, 1, 3, 1, 3),
+        (1, 3, 1, 6, 1, 6),
     ],
 )
-def test_sub(num1, denom1, num2, denom2, expected_num, expected_denom):
+def test_sub2(num1, denom1, num2, denom2, expected_num, expected_denom):
 
     f1 = IrreducibleFraction(num1, denom1)
     f2 = IrreducibleFraction(num2, denom2)
     result = f1 - f2
     assert result.numerator == expected_num
     assert result.denominator == expected_denom
+    assert isinstance(result, IrreducibleFraction)
